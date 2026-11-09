@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ConsumerVPN</string>
+    <!-- app_name and the url_* strings are generated from brand.properties in the project root -->
     <string name="manifest_special_use_permission">This foreground service is used as an intermediary to launch the VPN. The service monitors the user\'s internet connection status and notifies them if there\'s an issue before triggering the VPN connection.</string>
 
 
@@ -97,11 +97,12 @@
 
     <!-- Kill switch dialog -->
     <string name="kill_switch_dialog_label_title">Enable OS kill switch</string>
+    <!-- %1$s is the app name -->
     <string name="kill_switch_dialog_label_message">
         \u2022 Navigate to your device settings\n\u2022 Select \"Connections\" or \"Network &amp; internet\"
         \n\u2022 Go to \"Advanced\" or \"More connection settings\"
         \n\u2022 Select VPN
-        \n\u2022 Tap the cog next to ConsumerVPN\n\u2022 Enable both \"Always-on VPN\" and \"Block connections without VPN\"
+        \n\u2022 Tap the cog next to %1$s\n\u2022 Enable both \"Always-on VPN\" and \"Block connections without VPN\"
     </string>
     <string name="kill_switch_dialog_button_take_me_there">Take me there</string>
 

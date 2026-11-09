@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Brand colours used outside Jetpack Compose: splash screen, launcher icons, notifications and
+    the fill colour of vector drawables.
+
+    The colours inside the app's screens are set in the Compose theme
+    (presentation/ui/theme/Color.kt). When you rebrand, set these values to match it:
+    brand_accent should equal the theme's accentIcon colour.
+
+    This file holds the light-theme values. Dark-theme values are in values-night/brand_colors.xml
+    and TV values in src/tv/res/values/brand_colors.xml.
+-->
+<resources>
+
+    <!-- Main brand colour (connected shield, location pin, globe, notification highlight) -->
+    <color name="brand_accent">#4A90E2</color>
+
+    <!-- Splash screen. Shown before the app's theme loads, so it follows the system setting.
+         If theme_dark_theme_only is true, set these to the same values as values-night. -->
+    <color name="brand_splash_background">#F2F2F8</color>
+    <color name="brand_splash_icon">@color/brand_accent</color>
+
+    <!-- Launcher icons (adaptive icon background layer) -->
+    <color name="brand_launcher_background">#1B2B3E</color>
+    <color name="brand_launcher_background_tv">#171A21</color>
+
+    <!-- Status bar notification icon accent -->
+    <color name="brand_notification_icon">#FFFFFF</color>
+
+    <!-- Solid shapes in the login screen background (ic_bg_shapes_light / ic_bg_shapes_dark) -->
+    <color name="brand_login_shape_light_primary">#DDDEED</color>
+    <color name="brand_login_shape_light_secondary">#F2F2F8</color>
+    <color name="brand_login_shape_dark_primary">#222530</color>
+    <color name="brand_login_shape_dark_secondary">#2A2D37</color>
+
+    <!-- Default fill of vector icons. In-app icons are re-tinted by the Compose theme. -->
+    <color name="ic_fill_color">#FFFFFF</color>
+    <color name="ic_fill_accent_color">@color/brand_accent</color>
+
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Keep identical to tv/res/values/brand_colors.xml. Without this file, main/res/values-night
+     would take precedence over the TV values when the TV reports night mode. -->
+<resources>
+    <color name="brand_splash_background">#141720</color>
+    <color name="brand_splash_icon">#FFFFFF</color>
+</resources>

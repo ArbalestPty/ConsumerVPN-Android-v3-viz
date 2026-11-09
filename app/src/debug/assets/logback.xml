@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration debug='true'>
 
-    <property name="LOG_DIR" value="/data/data/com.wlvpn.consumervpn.debug/files/log" />
+    <!-- DATA_DIR is set by logback-android to the app's files directory, so the path follows the application ID -->
+    <property name="LOG_DIR" value="${DATA_DIR}/log" />
 
     <appender name="file" class="ch.qos.logback.core.FileAppender">
 

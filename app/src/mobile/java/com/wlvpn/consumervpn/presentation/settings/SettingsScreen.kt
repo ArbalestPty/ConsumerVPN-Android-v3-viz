@@ -441,7 +441,8 @@ fun SettingsScreen(
                             text = {
                                 Text(
                                     text = stringResource(
-                                        id = string.kill_switch_dialog_label_message
+                                        id = string.kill_switch_dialog_label_message,
+                                        stringResource(id = string.app_name)
                                     )
                                 )
                             },

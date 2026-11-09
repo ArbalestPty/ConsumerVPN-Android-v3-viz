@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -132,7 +133,8 @@ fun HomeScreen(
                     .size(LocalDimens.current.extended.homeScreenConnectedLogoSize),
                 painter = painterResource(id = R.drawable.ic_connected),
                 contentDescription = null,
-                contentScale = ContentScale.FillBounds
+                contentScale = ContentScale.FillBounds,
+                colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.accentIcon)
             )
 
             VisibleLocationRow(
@@ -351,6 +353,7 @@ fun VisibleLocationRow(
                     .padding(end = LocalDimens.current.xSmall),
                 painter = painterResource(id = R.drawable.ic_location),
                 contentDescription = null,
+                colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.accentIcon)
             )
 
             Text(
@@ -391,6 +394,7 @@ fun LocationSelectedRow(
                     .padding(end = LocalDimens.current.xSmall),
                 painter = painterResource(id = R.drawable.ic_location),
                 contentDescription = null,
+                colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.accentIcon)
             )
 
             Text(

@@ -26,7 +26,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -180,7 +179,7 @@ fun SettingsScreen(
                         modifier = itemPaddingModifier.padding(top = LocalDimens.current.xLarge),
                         text = string.settings_screen_label_title.stringRes,
                         fontSize = LocalDimens.current.extended.settingsTitleSize,
-                        color = Color.White,
+                        color = LocalColors.current.extendedColors.contentPrimary,
                         fontWeight = FontWeight.Bold,
                         fontFamily = displayNormalFontFamily
                     )
@@ -615,7 +614,7 @@ fun SettingsItem(
         colors = ListItemDefaults.colors(
             focusedContainerColor =
             LocalColors.current.extendedColors.settingsItemFocusedContainerColor,
-            focusedContentColor = Color.White
+            focusedContentColor = LocalColors.current.extendedColors.contentPrimary
         ),
         supportingContent = {
             if (description.isNotBlank()) {
@@ -623,7 +622,7 @@ fun SettingsItem(
                     modifier = Modifier.padding(top = LocalDimens.current.xSmall),
                     text = description,
                     fontSize = LocalDimens.current.extended.settingsItemDescriptionSize,
-                    color = Color.White,
+                    color = LocalColors.current.extendedColors.contentPrimary,
                     fontFamily = displayThinFontFamily
                 )
             }
@@ -639,7 +638,7 @@ fun SettingsItem(
                 modifier = Modifier,
                 text = title,
                 fontSize = LocalDimens.current.extended.settingsItemTitleSize,
-                color = Color.White,
+                color = LocalColors.current.extendedColors.contentPrimary,
                 fontWeight = FontWeight.Bold,
                 fontFamily = displayNormalFontFamily
             )
@@ -685,7 +684,7 @@ fun SettingsSwitch(
         colors = ListItemDefaults.colors(
             focusedContainerColor =
             LocalColors.current.extendedColors.settingsItemFocusedContainerColor,
-            focusedContentColor = Color.White
+            focusedContentColor = LocalColors.current.extendedColors.contentPrimary
         ),
         supportingContent = {
             if (description.isNotBlank()) {
@@ -693,7 +692,7 @@ fun SettingsSwitch(
                     modifier = Modifier.padding(top = LocalDimens.current.xSmall),
                     text = description,
                     fontSize = LocalDimens.current.extended.settingsItemDescriptionSize,
-                    color = Color.White,
+                    color = LocalColors.current.extendedColors.contentPrimary,
                     fontFamily = displayThinFontFamily
                 )
             }
@@ -714,7 +713,7 @@ fun SettingsSwitch(
             Text(
                 text = title,
                 fontSize = LocalDimens.current.extended.settingsItemTitleSize,
-                color = Color.White,
+                color = LocalColors.current.extendedColors.contentPrimary,
                 fontWeight = FontWeight.Bold,
                 fontFamily = displayNormalFontFamily
             )

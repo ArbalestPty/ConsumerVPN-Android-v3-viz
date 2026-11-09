@@ -4,6 +4,17 @@ package com.wlvpn.consumervpn.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+/*
+ * Colours used inside the app's screens (phone and TV).
+ *
+ * The Material 3 schemes below can be regenerated with Material Theme Builder from the client's
+ * brand colours (see documentation/ConsumerVPN App/APP_THEMING.md). The "extended" colours cover
+ * what Material 3 does not.
+ *
+ * Colours used outside Compose (splash screen, launcher icon, notifications) are in
+ * res/values/brand_colors.xml. Keep accentIcon in step with brand_accent there.
+ */
+
 val primaryLight = Color(0xFF3A608F)
 val onPrimaryLight = Color(0xFFFFFFFF)
 val primaryContainerLight = Color(0XFF4990E2)
@@ -41,6 +52,7 @@ val surfaceContainerHighLight = Color(0xFFE8E7EE)
 val surfaceContainerHighestLight = Color(0xFFE2E2E9)
 
 //Extended Colors Light
+val accentIconLight = Color(0xFF4A90E2)
 val colorDisconnectButtonLight = Color(0xFFCC8C89)
 val colorWindowBackgroundGradientStartEndLight = Color(0xFFffffff)
 val colorWindowBackgroundGradientCenterLight = Color(0xFFaeb1cb)
@@ -52,20 +64,6 @@ val colorBackgroundLocationHighlightLight = Color(0xFFaeb1cb)
 val colorBackgroundItemLocationLight = Color(0xFFdddeed)
 val colorBackgroundButtonLocationLight = Color(0xFFD9DDF7)
 val colorControlNormalLight = Color(0xFF171721)
-
-val connectButtonColorLight = Color(0xFF4990E2)
-val connectHighlightedButtonColorLight = Color(0xFF9DCDFC)
-val connectSelectedButtonColorLight = Color(0xFF9DCDFC)
-val disconnectButtonColorLight = Color(0xFFD1001D)
-val disconnectHighlightedButtonColorLight = Color(0xFFEA2944)
-val disconnectSelectedButtonColorLight = Color(0xFFEA2944)
-val connectingProgressIndicatorColorLight = Color(0xff4990E2)
-val ipRowLabelColorLight = Color(0xFFE1E2E8)
-val ipRowIpColorLight = Color(0xFF4a91e2)
-val locationRowLabelColorLight = Color(0xFFE1E2E8)
-val locationRowLocationColorLight = Color(0xFF4a91e2)
-val colorBackgroundForgotPasswordHighlightedLight = Color(0XFF1F212D)
-val colorForgotPasswordCloseHighlightedLight = Color(0XFF5E5D62)
 
 val primaryDark = Color(0xFFA3C9FE)
 val onPrimaryDark = Color(0xFF00315C)
@@ -104,6 +102,7 @@ val surfaceContainerHighDark = Color(0xFF282A2F)
 val surfaceContainerHighestDark = Color(0xFF33353A)
 
 //Extended Colors Dark
+val accentIconDark = Color(0xFF4A90E2)
 val colorWindowBackgroundGradientStartEndDark = Color(0xFF141720)
 val colorWindowBackgroundGradientCenterDark = Color(0xFF3E414B)
 val colorDisconnectButtonDark = Color(0xFFc9352e)
@@ -137,3 +136,10 @@ val colorSettingsDialogBackgroundDark = Color(0xff383B42)
 val colorSettingsItemFocusedContainerDark = Color(0xff383B42)
 val colorSettingsDialogButtonFocusedDark = Color(0xff70B4F6)
 val colorAboutUsCloseHighlightedDark = Color(0Xff383b42)
+
+// TV only (the TV app is dark only)
+val colorTvContentPrimaryDark = Color(0xFFFFFFFF)
+val colorTvContentSecondaryDark = Color(0xFF888888)
+val colorTvInputFocusedContainerDark = Color(0xFF888888)
+val colorTvQrCodeForegroundDark = Color(0xFFFFFFFF)
+val colorTvQrCodeBackgroundDark = Color(0xFF171A21)

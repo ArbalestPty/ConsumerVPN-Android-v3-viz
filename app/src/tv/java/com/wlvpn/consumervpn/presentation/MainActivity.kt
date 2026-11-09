@@ -98,7 +98,7 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate(Routes.ForgotPassword.route)
                                 },
                                 onSignUp = {
-                                    openWebViewWithUrl(getString(string.sign_up_url)) {
+                                    openWebViewWithUrl(getString(string.url_sign_up)) {
                                         showNoLinksSupportedError()
                                     }
                                 }
@@ -116,7 +116,7 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate(Routes.ForgotPassword.route)
                             },
                             onSignUp = {
-                                openWebViewWithUrl(getString(string.sign_up_url)) {
+                                openWebViewWithUrl(getString(string.url_sign_up)) {
                                     showNoLinksSupportedError()
                                 }
                             }
@@ -133,7 +133,7 @@ class MainActivity : ComponentActivity() {
                                 navController.navigate(Routes.ForgotPassword.route)
                             },
                             onSignUp = {
-                                openWebViewWithUrl(getString(string.sign_up_url)) {
+                                openWebViewWithUrl(getString(string.url_sign_up)) {
                                     showNoLinksSupportedError()
                                 }
                             }

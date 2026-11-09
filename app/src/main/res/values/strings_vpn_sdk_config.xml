@@ -14,10 +14,7 @@
     <!--IPGeo config-->
     <string name="ip_geo_url" translatable="false">https://ipgeo.wlvpn.com/</string>
 
-    <!--Custom URLs-->
-    <string name="support_url" translatable="false">https://www.wlvpn.com/</string>
-    <string name="sign_up_url" translatable="false">https://www.wlvpn.com/</string>
-    <string name="forgot_password_url" translatable="false">https://www.wlvpn.com/</string>
+    <!-- Support, sign-up, forgot password and legal links are set in brand.properties -->
 
     <!-- Notifications -->
     <string name="notification_channel_id">VpnNotificationChannel</string>

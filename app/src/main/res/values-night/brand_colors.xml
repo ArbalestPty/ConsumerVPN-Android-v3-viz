@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dark-theme overrides for values/brand_colors.xml -->
+<resources>
+    <color name="brand_splash_background">#141720</color>
+    <color name="brand_splash_icon">#FFFFFF</color>
+</resources>

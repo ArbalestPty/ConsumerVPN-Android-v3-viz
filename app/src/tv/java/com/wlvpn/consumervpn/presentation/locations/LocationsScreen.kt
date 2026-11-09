@@ -214,7 +214,7 @@ inline fun FastestAvailableContent(crossinline onConnect: () -> Unit) {
                     ),
                 painter = painterResource(id = R.drawable.ic_tv_locations),
                 contentDescription = "",
-                colorFilter = ColorFilter.tint(Color.White)
+                colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.contentPrimary)
             )
             Text(
                 modifier = Modifier
@@ -222,7 +222,7 @@ inline fun FastestAvailableContent(crossinline onConnect: () -> Unit) {
                         start = LocalDimens.current.xSmall
                     ), text = stringResource(id = R.string.locations_screen_fastest_label_title),
                 style = MaterialTheme.typography.labelSmall.copy(
-                    color = Color.White,
+                    color = LocalColors.current.extendedColors.contentPrimary,
                     fontSize = LocalDimens.current.extended.locationsScreenLabelFontSize,
                     fontWeight = FontWeight.Bold,
                     lineHeight =

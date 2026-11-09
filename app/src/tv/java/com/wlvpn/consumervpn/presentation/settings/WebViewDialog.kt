@@ -95,7 +95,7 @@ fun WebViewDialog(
                     modifier = Modifier.padding(LocalDimens.current.xSmall),
                     painter = painterResource(drawable.ic_back),
                     contentDescription = null,
-                    tint = Color.White
+                    tint = LocalColors.current.extendedColors.contentPrimary
                 )
             }
             Text(
@@ -103,7 +103,7 @@ fun WebViewDialog(
                     .align(Alignment.CenterVertically)
                     .padding(LocalDimens.current.xSmall),
                 text = url,
-                color = Color.Gray,
+                color = LocalColors.current.extendedColors.contentSecondary,
                 fontSize = LocalDimens.current.extended.webViewDialogUrlFontSize
             )
 

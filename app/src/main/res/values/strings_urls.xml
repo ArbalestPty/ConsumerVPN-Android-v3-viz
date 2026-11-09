@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="url_forgot_password">https://www.wlvpn.com/</string>
-    <string name="url_sign_up">https://www.wlvpn.com/</string>
-    <string name="url_contact_support">https://www.wlvpn.com/</string>
-    <string name="url_terms_service">https://www.wlvpn.com/</string>
-    <string name="url_policy">https://wlvpn.com/privacy-policy/</string>
-</resources>

@@ -200,7 +200,8 @@ This allows the usage of animated icons for the splash screen. Animated icons ca
 be implemented for API 31+ by creating an [Animated Vector Drawable(AVD)][6], and referencing such
 asset from a Theme that has `Theme.SplashScreen` defined as parent. This will be the 
 theme used by the app. Some properties defined here are:
-1. `windowSplashScreenBackground` The color to be used as background for the splash screen
+1. `windowSplashScreenBackground` The color to be used as background for the splash screen. It is
+set to `brand_splash_background`, which has light and dark values in `brand_colors.xml`
 2. `postSplashScreenTheme` Theme to be used after the splash screen is shown
 3. `windowSplashScreenAnimatedIcon` The icon displayed on the splash screen. This app contains
 an AVD referenced on the `v31/themes.xml` file, and also a static icon defined in `/themes.xml`
@@ -218,7 +219,13 @@ resources. Here's how to enforce dark mode only:
 
 1. Go to the `bools.xml` [file](../../app/src/main/res/values/bools.xml).
 2. Change the flag `theme_dark_theme_only` to `true`.
-3. Re-build the app.
+3. The splash screen is shown before the app starts, so it still follows the system setting. Set
+the light-theme splash colours in `values/brand_colors.xml` to the same values as
+`values-night/brand_colors.xml`.
+4. Re-build the app.
+
+In Compose code, use `isAppInDarkTheme()` rather than `isSystemInDarkTheme()` when choosing
+theme-specific artwork, so the flag is respected.
 
 [1]: https://m3.material.io/
 [2]: https://developer.android.com/compose

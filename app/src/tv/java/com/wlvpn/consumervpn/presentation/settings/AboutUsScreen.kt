@@ -1,6 +1,5 @@
 package com.wlvpn.consumervpn.presentation.settings
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,8 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -27,6 +24,7 @@ import androidx.tv.material3.ButtonDefaults
 import androidx.tv.material3.Surface
 import androidx.tv.material3.Text
 import com.wlvpn.consumervpn.R
+import com.wlvpn.consumervpn.presentation.ui.component.QrCode
 import com.wlvpn.consumervpn.presentation.ui.theme.LocalColors
 import com.wlvpn.consumervpn.presentation.ui.theme.LocalDimens
 import com.wlvpn.consumervpn.presentation.ui.theme.extended
@@ -59,7 +57,10 @@ fun AboutUsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.about_us_screen_title),
+                    text = stringResource(
+                        id = R.string.about_us_screen_title,
+                        stringResource(id = R.string.app_name)
+                    ),
                     color = LocalColors.current.scheme.onBackground,
                     style = MaterialTheme.typography.headlineLarge
                 )
@@ -67,7 +68,10 @@ fun AboutUsScreen(
                 Text(
                     modifier = Modifier
                         .padding(top = LocalDimens.current.medium),
-                    text = stringResource(id = R.string.about_us_screen_label_description),
+                    text = stringResource(
+                        id = R.string.about_us_screen_label_description,
+                        stringResource(id = R.string.app_name)
+                    ),
                     style = MaterialTheme.typography.bodySmall,
                     color = LocalColors.current.scheme.onBackground,
                 )
@@ -75,7 +79,7 @@ fun AboutUsScreen(
                 Text(
                     modifier = Modifier
                         .padding(top = LocalDimens.current.small),
-                    text = stringResource(R.string.about_us_link),
+                    text = stringResource(R.string.url_about_us),
                     style = MaterialTheme.typography.bodySmall,
                     color = LocalColors.current.scheme.onBackground,
                 )
@@ -85,8 +89,8 @@ fun AboutUsScreen(
                 )
 
                 //QR code
-                Image(
-                    painter = painterResource(id = R.drawable.ic_consumer_vpn_qr_code),
+                QrCode(
+                    content = stringResource(id = R.string.url_about_us),
                     contentDescription = stringResource(
                         id = R.string.about_us_screen_qr_code_content_description
                     ),
@@ -94,8 +98,7 @@ fun AboutUsScreen(
                         .size(
                             size = LocalDimens.current.extended.aboutUsScreenQrCodeImageSize
                         )
-                        .padding(top = LocalDimens.current.large),
-                    contentScale = ContentScale.Fit
+                        .padding(top = LocalDimens.current.large)
                 )
 
                 Spacer(

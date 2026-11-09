@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TV overrides for main/res/values/brand_colors.xml. The TV app is dark only.
+     Keep tv/res/values-night/brand_colors.xml identical. -->
+<resources>
+    <color name="brand_splash_background">#141720</color>
+    <color name="brand_splash_icon">#FFFFFF</color>
+</resources>

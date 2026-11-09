@@ -41,6 +41,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -229,7 +230,8 @@ inline fun ConnectedContent(
                     .align(Alignment.Center)
                     .size(dimensionResource(id = dimen.home_connection_ic_connected_size)),
                 painter = painterResource(id = drawable.ic_connected),
-                contentDescription = null
+                contentDescription = null,
+                colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.accentIcon)
             )
         }
 
@@ -306,6 +308,7 @@ inline fun DisconnectedContent(
                     .padding(end = dimensionResource(id = dimen.spacing_xsmall)),
                 painter = painterResource(id = drawable.ic_location),
                 contentDescription = null,
+                colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.accentIcon)
             )
 
             Text(
@@ -416,7 +419,8 @@ fun InformativeRow(
         Image(
             modifier = Modifier.align(Alignment.CenterVertically),
             painter = painterResource(id = icon),
-            contentDescription = null
+            contentDescription = null,
+            colorFilter = ColorFilter.tint(LocalColors.current.extendedColors.accentIcon)
         )
         Column(
             modifier = Modifier.padding(start = dimensionResource(id = dimen.spacing_normal))

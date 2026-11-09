@@ -422,7 +422,7 @@ private fun PopUpMenuItem(
         colors = ListItemDefaults.colors(
             focusedContainerColor =
             LocalColors.current.extendedColors.settingsItemFocusedContainerColor,
-            focusedContentColor = Color.White
+            focusedContentColor = LocalColors.current.extendedColors.contentPrimary
         ),
         headlineContent = {
             Text(
@@ -583,7 +583,7 @@ private fun AppListItem(
         colors = ListItemDefaults.colors(
             focusedContainerColor =
             LocalColors.current.extendedColors.settingsItemFocusedContainerColor,
-            focusedContentColor = Color.White
+            focusedContentColor = LocalColors.current.extendedColors.contentPrimary
         ),
         leadingContent = {
             AppIcon(

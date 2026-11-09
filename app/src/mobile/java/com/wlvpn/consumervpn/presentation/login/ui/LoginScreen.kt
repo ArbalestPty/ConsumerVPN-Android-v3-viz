@@ -6,7 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -51,7 +50,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.booleanResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -66,6 +64,7 @@ import com.wlvpn.consumervpn.presentation.login.validation.LoginEvent
 import com.wlvpn.consumervpn.presentation.login.view.components.LoginErrorLabel
 import com.wlvpn.consumervpn.presentation.login.view.components.LoginTextField
 import com.wlvpn.consumervpn.presentation.ui.theme.LocalColors
+import com.wlvpn.consumervpn.presentation.ui.theme.isAppInDarkTheme
 import com.wlvpn.consumervpn.presentation.util.isTablet
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -182,8 +181,9 @@ fun LoginScreen(
                         )
                     )
             ) {
+                val isDarkTheme = isAppInDarkTheme()
                 val imageShape =
-                    if (booleanResource(R.bool.theme_dark_theme_only) || isSystemInDarkTheme()) {
+                    if (isDarkTheme) {
                         R.drawable.ic_bg_shapes_dark
                     } else {
                         R.drawable.ic_bg_shapes_light
@@ -248,7 +248,13 @@ fun LoginScreen(
                                 max = dimensionResource(id = R.dimen.login_header_max_width)
                             )
                             .height(dimensionResource(id = R.dimen.login_header_height)),
-                        painter = painterResource(id = R.drawable.logo_consumer),
+                        painter = painterResource(
+                            id = if (isDarkTheme) {
+                                R.drawable.brand_logo_dark_theme
+                            } else {
+                                R.drawable.brand_logo_light_theme
+                            }
+                        ),
                         contentDescription = null,
                         contentScale = ContentScale.Fit
                     )

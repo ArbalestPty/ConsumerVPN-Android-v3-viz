@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Brand artwork chosen per theme.
+
+    The login screen shows brand_logo_light_theme or brand_logo_dark_theme (shown 56 dp high,
+    up to 250 dp wide). The TV app is dark only and uses brand_logo_dark_theme.
+
+    Both currently point to the same white logo. For a client whose logo would not show on the
+    light login screen, add a dark-coloured variant (for example drawable-*dpi/logo_light.png)
+    and point brand_logo_light_theme to it.
+-->
+<resources>
+    <item name="brand_logo_dark_theme" type="drawable">@drawable/logo_consumer</item>
+    <item name="brand_logo_light_theme" type="drawable">@drawable/logo_consumer</item>
+</resources>

@@ -10,3 +10,7 @@ buildSrc/build
 .cxx
 local.properties
 gradlew.bat
+
+# Release signing (see signing.properties.example)
+signing.properties
+*.keystore

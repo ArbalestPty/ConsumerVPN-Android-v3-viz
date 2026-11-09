@@ -106,7 +106,7 @@ class NotificationFactory(val application: Application) {
             .setUsesChronometer(true)
             .setShowWhen(true)
             .setVisibility(NotificationCompat.VISIBILITY_SECRET)
-            .setColor(ContextCompat.getColor(application, R.color.notification_icon_color))
+            .setColor(ContextCompat.getColor(application, R.color.brand_notification_icon))
             .setCustomContentView(notificationLayoutCollapsed)
             .setCustomBigContentView(notificationLayoutExpanded)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())

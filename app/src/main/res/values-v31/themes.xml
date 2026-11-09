@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/background_splash</item>
+        <item name="windowSplashScreenBackground">@color/brand_splash_background</item>
         <item name="postSplashScreenTheme">@style/Theme.ConsumerApplication</item>
         <item name="android:windowSplashScreenAnimatedIcon">@drawable/avd_consumer_splash</item>
         <item name="android:windowSplashScreenAnimationDuration">0</item>

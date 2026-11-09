@@ -2,7 +2,6 @@ package com.wlvpn.consumervpn.presentation.login.ui
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,14 +20,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.tv.material3.Button
 import androidx.tv.material3.ButtonDefaults
 import androidx.tv.material3.Text
 import com.wlvpn.consumervpn.R
+import com.wlvpn.consumervpn.presentation.ui.component.QrCode
 import com.wlvpn.consumervpn.presentation.ui.theme.LocalColors
 import com.wlvpn.consumervpn.presentation.ui.theme.LocalDimens
 import com.wlvpn.consumervpn.presentation.ui.theme.extended
@@ -69,13 +67,16 @@ fun ForgotPasswordScreen(
             Text(
                 modifier = Modifier
                     .padding(top = LocalDimens.current.normal),
-                text = stringResource(id = R.string.forgot_password_screen_label_description),
+                text = stringResource(
+                    id = R.string.forgot_password_screen_label_description,
+                    stringResource(id = R.string.app_name)
+                ),
                 style = MaterialTheme.typography.bodySmall,
                 color = LocalColors.current.scheme.onBackground,
             )
 
             Text(
-                text = stringResource(R.string.forgot_password_url),
+                text = stringResource(R.string.url_forgot_password),
                 style = MaterialTheme.typography.bodySmall,
                 color = LocalColors.current.scheme.onBackground,
             )
@@ -85,15 +86,14 @@ fun ForgotPasswordScreen(
             )
 
             //QR code
-            Image(
-                painter = painterResource(id = R.drawable.ic_consumer_vpn_qr_code),
+            QrCode(
+                content = stringResource(id = R.string.url_forgot_password),
                 contentDescription = stringResource(
                     id = R.string.forgot_password_screen_qr_code_content_description
                 ),
                 modifier = Modifier.size(
                     size = LocalDimens.current.extended.forgotPasswordScreenQrCodeImageSize
-                ),
-                contentScale = ContentScale.Fit
+                )
             )
 
             Spacer(
