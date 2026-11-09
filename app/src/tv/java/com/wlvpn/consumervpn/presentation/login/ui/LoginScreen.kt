@@ -209,7 +209,7 @@ fun LoginScreen(
                         max = dimensionResource(id = R.dimen.login_header_max_width)
                     )
                     .height(dimensionResource(id = R.dimen.login_header_height)),
-                painter = painterResource(id = R.drawable.logo_consumer),
+                painter = painterResource(id = R.drawable.brand_logo_dark_theme),
                 contentDescription = null,
                 contentScale = ContentScale.Fit
             )
@@ -326,7 +326,8 @@ fun LoginScreen(
                         },
                     colors = IconButtonDefaults.colors(
                         containerColor = LocalColors.current.scheme.background,
-                        focusedContainerColor = Color.Gray
+                        focusedContainerColor =
+                            LocalColors.current.extendedColors.inputFocusedContainer
                     ),
                     onClick = {
                         passwordVisible = !passwordVisible

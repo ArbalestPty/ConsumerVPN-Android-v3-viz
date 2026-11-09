@@ -1,3 +1,4 @@
+import java.util.Properties
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
@@ -17,12 +18,56 @@ apply(plugin = BuildPlugins.androidJunit5ApplyName)
 apply(from = "../config/quality/detekt/detekt-config.gradle")
 apply(from = "../config/quality/lint/lint-config.gradle")
 
+// ---- Brand configuration ----
+// Identity and links come from brand.properties in the project root, or from the file passed with
+// -PbrandFile=<path>. See documentation/ConsumerVPN App/REBRANDING.md.
+val brandFile: File = rootProject.file(
+    providers.gradleProperty("brandFile").getOrElse("brand.properties")
+)
+val brandProperties = loadProperties(brandFile)
+    ?: throw GradleException("Brand file not found: ${brandFile.absolutePath}")
+
+fun brand(key: String): String =
+    brandProperties.getProperty(key)?.trim()?.takeIf { it.isNotEmpty() }
+        ?: throw GradleException("Missing or empty '$key' in ${brandFile.name}")
+
+// ---- Release signing ----
+// Release keys must not live in the repository. They are read from signing.properties in the
+// project root (ignored by git), from the file passed with -PsigningFile=<path>, or from the
+// RELEASE_STORE_FILE, RELEASE_STORE_PASSWORD, RELEASE_KEY_ALIAS and RELEASE_KEY_PASSWORD
+// environment variables. If none are set, the sample staging key is used and a warning is shown.
+val releaseSigningProperties: Properties = run {
+    val file = rootProject.file(
+        providers.gradleProperty("signingFile").getOrElse("signing.properties")
+    )
+    loadProperties(file) ?: Properties().apply {
+        mapOf(
+            "storeFile" to "RELEASE_STORE_FILE",
+            "storePassword" to "RELEASE_STORE_PASSWORD",
+            "keyAlias" to "RELEASE_KEY_ALIAS",
+            "keyPassword" to "RELEASE_KEY_PASSWORD",
+        ).forEach { (key, env) -> System.getenv(env)?.let { setProperty(key, it) } }
+    }
+}.let { configured ->
+    if (configured.getProperty("storeFile").isNullOrBlank()) {
+        logger.warn(
+            "Release signing is not configured, so the sample staging key is used. " +
+                "Do not publish this build. See signing.properties.example."
+        )
+        loadProperties(rootProject.file("config/keystores/sample-release-signing.properties"))
+            ?: throw GradleException("Sample release signing properties are missing")
+    } else {
+        configured
+    }
+}
+
 android {
     namespace = AndroidSdk.namespace
     compileSdk = AndroidSdk.compileSdk
 
     defaultConfig {
-        applicationId = "com.wlvpn.consumervpn"  // Update this with your own application id
+        // Set in brand.properties. Never change it after the first release.
+        applicationId = brand("app.applicationId")
         minSdk = AndroidSdk.minSdk
         targetSdk = AndroidSdk.targetSdk
         versionCode = getVersionCode()
@@ -35,11 +80,23 @@ android {
             useSupportLibrary = true
         }
 
-        buildConfigField ("String", "FLAGS_HOSTNAME", "\"https://static.wlvpn.com/flags/\"")
+        buildConfigField("String", "FLAGS_HOSTNAME", "\"${brand("flags.hostname")}\"")
 
+        // Brand strings, generated from brand.properties
+        resValue("string", "app_name", brand("app.name").escapeForAndroidString())
+        mapOf(
+            "url_forgot_password" to "url.forgotPassword",
+            "url_sign_up" to "url.signUp",
+            "url_contact_support" to "url.contactSupport",
+            "url_terms_service" to "url.termsOfService",
+            "url_policy" to "url.privacyPolicy",
+            "url_about_us" to "url.aboutUs",
+        ).forEach { (resourceName, key) ->
+            resValue("string", resourceName, brand(key).escapeForAndroidString())
+        }
     }
 
-    // These keys are intended for tests environments only, the release keys should not live in the gradle file
+    // The debug key is for local development only. Release signing is configured above.
     signingConfigs {
 
         getByName("debug") {
@@ -50,10 +107,10 @@ android {
         }
 
         create("release") {
-            storeFile = rootProject.file("config/keystores/staging-consumer.jks")
-            keyAlias = "consumervpn-v2"
-            keyPassword = "hy4f8dhETrnjME"
-            storePassword = "hy4f8dhETrnjME"
+            storeFile = rootProject.file(releaseSigningProperties.getProperty("storeFile"))
+            storePassword = releaseSigningProperties.getProperty("storePassword")
+            keyAlias = releaseSigningProperties.getProperty("keyAlias")
+            keyPassword = releaseSigningProperties.getProperty("keyPassword")
         }
     }
 
@@ -198,6 +255,7 @@ dependencies {
 
     // TV
     "tvImplementation"(Dependencies.composeTv.mergedId)
+    "tvImplementation"(Dependencies.zxingCore.mergedId)
 
     coreLibraryDesugaring(Dependencies.desugaringJavaApi.mergedId)
 
@@ -229,3 +287,15 @@ fun getVersionName(): String {
 
     return "${versionMajor}.${versionMinor}.${versionPatch}.${pipeline}"
 }
+
+fun loadProperties(file: File): Properties? =
+    file.takeIf { it.isFile }?.reader(Charsets.UTF_8)?.use { reader ->
+        Properties().apply { load(reader) }
+    }
+
+// Escapes the characters that aapt treats specially in string resources.
+fun String.escapeForAndroidString(): String =
+    replace("\\", "\\\\")
+        .replace("'", "\\'")
+        .replace("\"", "\\\"")
+        .let { if (it.startsWith("@") || it.startsWith("?")) "\\$it" else it }

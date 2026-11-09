@@ -19,7 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.tv.material3.ListItem
@@ -70,7 +69,7 @@ fun <T> RadioButtonListDialog(
                 text = title,
                 textAlign = TextAlign.Center,
                 fontSize = LocalDimens.current.extended.settingsDialogTitleSize,
-                color = Color.White
+                color = LocalColors.current.extendedColors.contentPrimary
             )
         }
         Box(
@@ -120,7 +119,7 @@ fun RadioButtonItem(
         colors = ListItemDefaults.colors(
             focusedContainerColor =
             LocalColors.current.extendedColors.settingsDialogBackgroundColor,
-            focusedContentColor = Color.White
+            focusedContentColor = LocalColors.current.extendedColors.contentPrimary
         ),
         leadingContent = {
             RadioButton(
@@ -135,7 +134,7 @@ fun RadioButtonItem(
                 modifier = Modifier,
                 text = title,
                 fontSize = LocalDimens.current.extended.settingsDialogRadioTextSize,
-                color = Color.White,
+                color = LocalColors.current.extendedColors.contentPrimary,
                 fontWeight = FontWeight.Bold,
                 fontFamily = displayNormalFontFamily
             )

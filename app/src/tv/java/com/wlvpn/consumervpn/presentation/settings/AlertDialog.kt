@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.tv.material3.ListItem
 import androidx.tv.material3.ListItemDefaults
@@ -63,7 +62,7 @@ fun AlertDialog(
                 text = title,
                 textAlign = TextAlign.Center,
                 fontSize = LocalDimens.current.extended.settingsDialogTitleSize,
-                color = Color.White
+                color = LocalColors.current.extendedColors.contentPrimary
             )
             if (description.isNotBlank()) {
                 Text(
@@ -77,7 +76,7 @@ fun AlertDialog(
                     text = description,
                     fontSize = LocalDimens.current.extended.settingsDialogDescriptionSize,
                     textAlign = TextAlign.Justify,
-                    color = Color.Gray
+                    color = LocalColors.current.extendedColors.contentSecondary
                 )
             }
         }

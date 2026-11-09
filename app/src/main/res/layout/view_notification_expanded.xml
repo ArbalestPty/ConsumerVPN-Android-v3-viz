@@ -26,7 +26,7 @@
         style="@style/TextAppearance.Compat.Notification.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/main_blue"
+        android:textColor="@color/brand_accent"
         android:paddingTop="@dimen/spacing_small"
         android:gravity="center_vertical"
         android:text="@string/disconnect"/>

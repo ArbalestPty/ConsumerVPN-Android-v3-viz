@@ -103,6 +103,7 @@ private val darkScheme = darkColorScheme(
 
 val extendedLight = ExtendedColorScheme(
     extendedColors = ColorFamily(
+        accentIcon = accentIconLight,
         disconnectedColor = colorDisconnectButtonLight,
         gradientStartEnd = colorWindowBackgroundGradientStartEndLight,
         gradientCenter = colorWindowBackgroundGradientCenterLight,
@@ -120,6 +121,7 @@ val extendedLight = ExtendedColorScheme(
 
 val extendedDark = ExtendedColorScheme(
     extendedColors = ColorFamily(
+        accentIcon = accentIconDark,
         disconnectedColor = colorDisconnectButtonDark,
         gradientStartEnd = colorWindowBackgroundGradientStartEndDark,
         gradientCenter = colorWindowBackgroundGradientCenterDark,
@@ -137,6 +139,8 @@ val extendedDark = ExtendedColorScheme(
 
 @Immutable
 data class ColorFamily(
+    // Brand-coloured icons: connected shield, location pin, globe
+    val accentIcon: Color,
     val disconnectedColor: Color,
     val gradientStartEnd: Color,
     val gradientCenter: Color,
@@ -152,6 +156,7 @@ data class ColorFamily(
 
 //Used when you don't want to define extended colorFamily
 val unspecified_scheme = ColorFamily(
+    accentIcon = Color.Unspecified,
     disconnectedColor = Color.Unspecified,
     gradientStartEnd = Color.Unspecified,
     gradientCenter = Color.Unspecified,
@@ -166,24 +171,29 @@ val unspecified_scheme = ColorFamily(
 )
 
 val LocalColors = staticCompositionLocalOf { extendedDark }
+
+/**
+ * Whether the app is showing its dark theme: either the system is in dark mode or the
+ * theme_dark_theme_only flag forces it. Use this, not isSystemInDarkTheme(), to choose
+ * theme-specific artwork.
+ */
+@Composable
+fun isAppInDarkTheme(): Boolean =
+    booleanResource(bool.theme_dark_theme_only) || isSystemInDarkTheme()
+
 @Composable
 fun AppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = isAppInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val isDarkThemeOnly =  booleanResource(bool.theme_dark_theme_only)
-    val colorScheme = when {
-        isDarkThemeOnly -> extendedDark
-        darkTheme -> extendedDark
-        else -> extendedLight
-    }
+    val colorScheme = if (darkTheme) extendedDark else extendedLight
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.scheme.background.toArgb()
             WindowCompat.getInsetsController(window, view)
-                .isAppearanceLightStatusBars = !isDarkThemeOnly && !darkTheme
+                .isAppearanceLightStatusBars = !darkTheme
         }
     }
 

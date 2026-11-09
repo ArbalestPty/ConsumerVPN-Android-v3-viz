@@ -9,8 +9,9 @@
     </string>
 
     <string name="forgot_password_screen_title">Forgot Password</string>
+    <!-- %1$s is the app name -->
     <string name="forgot_password_screen_label_description">
-        Visit the ConsumerVPN website from a browser to reset your password
+        Visit the %1$s website from a browser to reset your password
     </string>
     <string name="forgot_password_screen_qr_code_content_description">QR code</string>
 
@@ -22,11 +23,12 @@
     <string name="locations_screen_countries_label_title">Countries</string>
 
     <!-- about us screen -->
-    <string name="about_us_screen_title">About ConsumerVPN</string>
+    <!-- %1$s is the app name -->
+    <string name="about_us_screen_title">About %1$s</string>
+    <!-- %1$s is the app name -->
     <string name="about_us_screen_label_description">
-        Visit the ConsumerVPN website from a browser to learn more about us
+        Visit the %1$s website from a browser to learn more about us
     </string>
-    <string name="about_us_link" translatable="false">https://www.wlvpn.com/</string>
     <string name="about_us_screen_qr_code_content_description">QR code</string>
 
 </resources>

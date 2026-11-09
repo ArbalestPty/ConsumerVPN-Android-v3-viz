@@ -15,6 +15,9 @@ Please refer to the following documentation to getting started:
 
 [See ConsumerVPN Sample app documentation](documentation/GETTING_STARTED_CONSUMER_VPN_APP.md)
 
+The app's name, application ID and links are set in [brand.properties](brand.properties). For 
+everything else a new brand needs, see the [rebranding guide](documentation/ConsumerVPN%20App/REBRANDING.md).
+
 ## WLVPN VPN SDK documentation
 
 This documentation provides a comprehensive guide to utilizing the VPN SDK library. It covers the 

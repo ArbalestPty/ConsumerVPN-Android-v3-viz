@@ -1,0 +1,8 @@
+# Copy to signing.properties (ignored by git) and fill in the client's release key.
+# Keep the keystore itself outside the repository; the path may be absolute or relative to the
+# project root. On CI, set RELEASE_STORE_FILE, RELEASE_STORE_PASSWORD, RELEASE_KEY_ALIAS and
+# RELEASE_KEY_PASSWORD instead.
+storeFile=/path/to/client-release.jks
+storePassword=
+keyAlias=
+keyPassword=

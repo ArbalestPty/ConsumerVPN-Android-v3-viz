@@ -382,6 +382,13 @@ object Dependencies {
         version = "1.0.0"
     )
 
+    // QR code generation (TV forgot password and About screens)
+    val zxingCore = Dependency(
+        group = "com.google.zxing",
+        module = "core",
+        version = "3.5.3"
+    )
+
     val kotlinxSerialization = Dependency(
         group = "org.jetbrains.kotlinx",
         module = "kotlinx-serialization-core",

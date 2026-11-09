@@ -107,15 +107,9 @@ you need to set a unique Application ID. This ID should ideally reflect your bra
 Once you publish your app with a specific Application ID, you should never change it, as Google Play 
 will treat any subsequent upload with a different ID as a completely new application.
 
-Here's how to correctly set your Application ID:
-
-1. Open your module-level build.gradle.kts [file](../app/build.gradle.kts) 
-2. Locate the `applicationId` property within the defaultConfig block: Inside the android { ... } 
-block, `applicationId = "com.wlvpn.consumervpn"` 
-3. Change the applicationId string to your unique identifier; Replace the existing value 
-(e.g., "com.example.myapp" or a sample app's ID like "com.wlvpn.consumervpn") with your desired 
-Application ID. A common convention is to use a reverse domain name style,
-like com.yourcompany.yourbrand: `applicationId = "com.<company>.<brand>"`
+Set it as `app.applicationId` in [brand.properties](../brand.properties) in the project root. 
+A common convention is a reverse domain name, like `com.<company>.<brand>`. The app name and the 
+app's links are set in the same file; see [Rebranding](ConsumerVPN%20App/REBRANDING.md).
 
 ### VPN SDK Keys Setup
 
@@ -135,14 +129,20 @@ To download the necessary dependencies for compiling the app, you need to set up
 4. Sync the project. You should now be able to download the dependencies.
 
 ### Customizable URLs
-The client must provide
-1. Support URL - Support related URL.
-2. Forgot password URL - The application does not have an implementation for a user to recover his password, the user has to go to a web page to do so.
+The client must provide the support, sign-up, forgot password, terms of service and privacy 
+policy links (and, for TV, an About link). The app has no password reset of its own, so the user 
+is sent to the forgot password page.
 
-    ```xml
-        <string name="support_url" translatable="false">https://www.wlvpn.com/</string>
-        <string name="forgot_password_url" translatable="false">https://www.wlvpn.com/</string>
-    ```
+All links are set in [brand.properties](../brand.properties):
+
+```properties
+url.forgotPassword=https://www.example.com/forgot-password
+url.signUp=https://www.example.com/sign-up
+url.contactSupport=https://support.example.com/
+url.termsOfService=https://www.example.com/terms
+url.privacyPolicy=https://www.example.com/privacy
+url.aboutUs=https://www.example.com/
+```
 
 ## Building The App
 This project uses the Gradle build system, we provide different Build Types and flavors to facilitate testing.
@@ -175,20 +175,30 @@ MobileQA
 
 By default, ConsumerVPN follows Google's [Material design][3]
 
+For a complete list of what to change for a new brand, with a checklist, see
+[Rebranding](ConsumerVPN%20App/REBRANDING.md).
+
 ### App Colors
 
-- You can find the main application colors under `values/colors_palette.xml`
-- All other custom colors are under `values/colors.xml`
+- Colours inside the app's screens are in the Compose theme, `presentation/ui/theme/Color.kt`. 
+See [App Theming](#app-theming).
+- Colours used before the app starts or outside it (splash screen, launcher icon background, 
+notifications) are in `values/brand_colors.xml`, with dark-theme values in 
+`values-night/brand_colors.xml`.
 
-All of the colors have already been placed by category. Follow name descriptions and you can theme your app by replacing current values.
+[Rebranding](ConsumerVPN%20App/REBRANDING.md) lists every brand colour and where it shows.
 
 ### App Icons
 
 Replace current app icons. We recommend creating your app icons using
 Android Studio to accomplish this right click on the `res` folder and
 choose `New -> Image Asset` option. Follow the instructions for the
-`Launcher Icons (Legacy and Legacy)` Icon Type. This should override
+`Launcher Icons (Adaptive and Legacy)` Icon Type. This should override
 all icons or create new icons for the selected flavor.
+
+The adaptive icon also declares a monochrome layer for Android 13+ themed icons. See
+[Rebranding](ConsumerVPN%20App/REBRANDING.md#3-logo-and-icon-artwork) for the full list of
+logo and icon assets.
 
 ### External Theming Resources
 

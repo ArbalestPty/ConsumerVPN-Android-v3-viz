@@ -123,12 +123,12 @@ class MainActivity : ComponentActivity() {
                                 startDestination = Routes.Login.route,
                                 closeApp = { this.finish() },
                                 onForgotPassword = {
-                                    openWebViewWithUrl(getString(string.forgot_password_url)) {
+                                    openWebViewWithUrl(getString(string.url_forgot_password)) {
                                         showNoLinksSupportedError()
                                     }
                                 },
                                 onSignUp = {
-                                    openWebViewWithUrl(getString(string.sign_up_url)) {
+                                    openWebViewWithUrl(getString(string.url_sign_up)) {
                                         showNoLinksSupportedError()
                                     }
                                 }
@@ -141,12 +141,12 @@ class MainActivity : ComponentActivity() {
                             startDestination = Routes.Home.route,
                             closeApp = { this.finish() },
                             onForgotPassword = {
-                                openWebViewWithUrl(getString(string.forgot_password_url)) {
+                                openWebViewWithUrl(getString(string.url_forgot_password)) {
                                     showNoLinksSupportedError()
                                 }
                             },
                             onSignUp = {
-                                openWebViewWithUrl(getString(string.sign_up_url)) {
+                                openWebViewWithUrl(getString(string.url_sign_up)) {
                                     showNoLinksSupportedError()
                                 }
                             }
@@ -158,12 +158,12 @@ class MainActivity : ComponentActivity() {
                             startDestination = Routes.Login.route,
                             closeApp = { this.finish() },
                             onForgotPassword = {
-                                openWebViewWithUrl(getString(string.forgot_password_url)) {
+                                openWebViewWithUrl(getString(string.url_forgot_password)) {
                                     showNoLinksSupportedError()
                                 }
                             },
                             onSignUp = {
-                                openWebViewWithUrl(getString(string.sign_up_url)) {
+                                openWebViewWithUrl(getString(string.url_sign_up)) {
                                     showNoLinksSupportedError()
                                 }
                             }

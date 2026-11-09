@@ -53,6 +53,12 @@ private val darkScheme = darkColorScheme(
 
 val extendedDark = ExtendedColorScheme(
     extendedColors = ColorFamily(
+        accentIcon = accentIconDark,
+        contentPrimary = colorTvContentPrimaryDark,
+        contentSecondary = colorTvContentSecondaryDark,
+        inputFocusedContainer = colorTvInputFocusedContainerDark,
+        qrCodeForeground = colorTvQrCodeForegroundDark,
+        qrCodeBackground = colorTvQrCodeBackgroundDark,
         disconnectedColor = colorDisconnectButtonDark,
         gradientStartEnd = colorWindowBackgroundGradientStartEndDark,
         gradientCenter = colorWindowBackgroundGradientCenterDark,
@@ -91,6 +97,14 @@ val extendedDark = ExtendedColorScheme(
 
 @Immutable
 data class ColorFamily(
+    // Brand-coloured icons: connected shield, location pin
+    val accentIcon: Color,
+    // Text and icons on TV dialogs, settings rows and focused list items
+    val contentPrimary: Color,
+    val contentSecondary: Color,
+    val inputFocusedContainer: Color,
+    val qrCodeForeground: Color,
+    val qrCodeBackground: Color,
     val disconnectedColor: Color,
     val gradientStartEnd: Color,
     val gradientCenter: Color,
